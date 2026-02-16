@@ -1,14 +1,15 @@
 from flask import Flask, request, render_template_string
+import os
 
-app = Flask(__name__)
+app = Flask(_name_)
 
 @app.route("/")
 def home():
-    return "site çalışıyor"
+    return "site calisiyor"
 
 @app.route("/admin", methods=["GET","POST"])
 def admin():
-    if request.method=="POST":
+    if request.method == "POST":
         if request.form.get("username")=="admin" and request.form.get("password")=="1234":
             return "LOGIN OK"
 
@@ -20,5 +21,5 @@ def admin():
     </form>
     """)
 
-
-app.run()
+if _name_ == "_main_":
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT",10000)))
