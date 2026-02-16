@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template_string
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 @app.route("/")
 def home():
@@ -19,5 +19,6 @@ def admin():
     <button>login</button>
     </form>
     """)
+
 
 app.run()
