@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template_string
 import os
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 @app.route("/")
 def home():
@@ -9,7 +9,7 @@ def home():
 
 @app.route("/admin", methods=["GET","POST"])
 def admin():
-    if request.method == "POST":
+    if request.method=="POST":
         if request.form.get("username")=="admin" and request.form.get("password")=="1234":
             return "LOGIN OK"
 
@@ -21,5 +21,6 @@ def admin():
     </form>
     """)
 
-if _name_ == "_main_":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT",10000)))
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port
